@@ -32,6 +32,11 @@ public class Event {
 		this.crypted = crypted;
 	}
 	
-	
+	public Event(String name, Date date, boolean crypted)
+	{
+		this.crypted = crypted;
+		this.name = name;
+		this.date = date;
+	}
 
 }
