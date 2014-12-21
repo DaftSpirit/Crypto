@@ -2,7 +2,7 @@ package crypto;
 
 import java.util.Date;
 import java.security.*;
-import java.crypto.*;
+import javax.crypto.*;
 
 public class Event {
 	
