@@ -19,7 +19,7 @@ public class Event {
 	{
 		this.name = "default event";
 		this.crypted = false;
-		this.date = new Date(2015, 1, 1);
+		this.date = new Date();	//unix time, initialized at the time of creation
 	}
 	
 	/**
@@ -30,7 +30,7 @@ public class Event {
 	public Event(boolean crypted)
 	{
 		this.name = "debug event";
-		this.date = new Date(2015, 1, 1);
+		this.date = new Date();
 		this.crypted = crypted;
 	}
 	
