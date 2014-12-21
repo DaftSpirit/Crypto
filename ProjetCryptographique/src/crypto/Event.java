@@ -68,12 +68,14 @@ public class Event {
 		encryptDate();
 	}
 
-	private void encryptDate() {
+	private void encryptDate() 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void encryptName() {
+	private void encryptName()
+	{
 		// TODO Auto-generated method stub
 		
 	}
