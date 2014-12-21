@@ -38,5 +38,20 @@ public class Event {
 		this.name = name;
 		this.date = date;
 	}
+	
+	public Date getDate()
+	{
+		return this.date;
+	}
+	
+	public String getName()
+	{
+		return this.name;
+	}
+	
+	public boolean isCrypted()
+	{
+		return this.crypted;
+	}
 
 }
