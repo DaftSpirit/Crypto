@@ -34,6 +34,12 @@ public class Event {
 		this.crypted = crypted;
 	}
 	
+	/**
+	 * constructor used by gui for the typical use
+	 * @param name : the name of the event
+	 * @param date : date of event
+	 * @param crypted : if the event is crypted or not
+	 */
 	public Event(String name, Date date, boolean crypted)
 	{
 		this.crypted = crypted;
