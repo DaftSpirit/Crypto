@@ -56,6 +56,22 @@ public class Event {
 		return this.crypted;
 	}
 	
+	public void encrypt()
+	{
+		encryptName();
+		encryptDate();
+	}
+
+	private void encryptDate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void encryptName() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 
 }
