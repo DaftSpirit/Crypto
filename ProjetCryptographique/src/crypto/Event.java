@@ -77,6 +77,14 @@ public class Event {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Event [name=" + name + ", date=" + date.toString() + ", crypted="
+				+ crypted + "]";
+	}
+	
+	
 	
 	
 
