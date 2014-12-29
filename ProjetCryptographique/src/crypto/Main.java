@@ -4,7 +4,7 @@ import intergraphique.Interface_P;
 
 /* Une classe main pour tester
  * auteur: Axel
- * srsly une classe qui s'appelle main ?! je rajoute la majuscule au début du nom
+ * srsly une classe qui s'appelle main ?! je rajoute la majuscule au début du nom -> Joris
  */
 public class Main {
 
