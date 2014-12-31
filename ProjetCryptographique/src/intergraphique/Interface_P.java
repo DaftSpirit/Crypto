@@ -20,7 +20,7 @@ public class Interface_P extends JFrame{
 		Panneau p = new Panneau(this);
 		
 		//JFrame
-		this.setTitle("Agenda électronique");
+		this.setTitle("Agenda Electronique");
 		this.setSize(300,200);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
