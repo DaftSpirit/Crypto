@@ -15,5 +15,16 @@ public class Diary {
 	
 	private Map<String,Event> events;
 	private SecretKeySpec key;
+	
+	
+	/**
+	 * 
+	 * @param name : name of the event
+	 * @param event : the object event
+	 */
+	public void addEvent(String name, Event event)
+	{
+		this.events.put(name, event);
+	}
 
 }
