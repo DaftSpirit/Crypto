@@ -7,13 +7,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 
+/**
+ * class bouton extends JButton 
+ * @author Axel
+ */
+
 public class Bouton extends JButton implements MouseListener{
 
 	  private String name;
 	  private String password="motdepasse";		
 	  private JFrame f;
 	  private JPasswordField pw;
-			  
+	
+	  /**
+	   * public Bouton(String,JFrame,JPassword) 
+	   * @param str : name of button
+	   * @param f : Jframe reference contains Bouton
+	   * @param pw : Jpassword reference contain the user password
+	   */
+	  
 	  public Bouton(String str, JFrame f, JPasswordField pw){
 	    super(str);
 	    this.name = str;
