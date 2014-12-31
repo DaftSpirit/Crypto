@@ -15,9 +15,12 @@ import javax.swing.JPasswordField;
 public class Bouton extends JButton implements MouseListener{
 
 	  private String name;
-	  private String password="motdepasse";		
 	  private JFrame f;
 	  private JPasswordField pw;
+	  
+	  //le mot de passe se trouve ici -> il faudra bien sur le déplacer
+	  private String password="motdepasse";		
+	 
 	
 	  /**
 	   * public Bouton(String,JFrame,JPassword) 
