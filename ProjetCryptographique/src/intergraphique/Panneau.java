@@ -8,7 +8,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+/**
+ * class Panel for Jframe Interface_P
+ * @author Axel
+ */
 public class Panneau extends JPanel{	
+	
+	/**
+	 * pulic panneau(JFrame f)
+	 * default constructor 
+	 * @param f : refrence JFrame contains Panneau
+	 */
 	
 	public Panneau(JFrame f){
 		JLabel l1 = new JLabel("<html>"

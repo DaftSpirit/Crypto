@@ -1,7 +1,8 @@
 package intergraphique;
 
-/* Classe pour l'interface principale avec le mot de passe
- * auteur: Axel 
+/**
+ * class for interface with password 
+ * @author Axel 
  */
 
 import javax.swing.JFrame;
@@ -9,6 +10,12 @@ import javax.swing.JFrame;
 
 public class Interface_P extends JFrame{
 		
+	/** 
+	 * Interface_P()
+	 * default constructor for JFrame 
+	 * @param null
+	 */
+	
 	public Interface_P(){		
 		Panneau p = new Panneau(this);
 		
