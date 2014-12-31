@@ -11,6 +11,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		Interface_P i1 = new Interface_P();
+		Event e1 = new Event();
+		System.out.println(e1);
 	}
 
 }
