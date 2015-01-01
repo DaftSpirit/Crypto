@@ -1,17 +1,26 @@
 package crypto;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 import intergraphique.Interface_P;
 
 /* Une classe main pour tester
  * auteur: Axel
- * srsly une classe qui s'appelle main ?! je rajoute la majuscule au début du nom -> Joris 
+ * Test le cryptage de name
  */
 
 public class Main {
 
-	public static void main(String[] args) {
-		Interface_P i1 = new Interface_P();
+	public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+		//Interface_P i1 = new Interface_P();
 		Event e1 = new Event();
+		System.out.println(e1);
+		e1.encrypt();
 		System.out.println(e1);
 	}
 
