@@ -25,12 +25,7 @@ public class Event {
 		this.name = "default event";
 		this.crypted = false;
 		this.date = new Date();	//unix time, initialized at the time of creation
-		// Obtention d'un générateur de clés pour RC4
-		KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		// Spécification longueur de la clé
-		kg.init(128);
-		// Génération de la clé secrète
-		this.sKey = kg.generateKey();
+		this.sKey = key();
 	}
 	
 	/**
@@ -44,12 +39,8 @@ public class Event {
 		this.name = "debug event";
 		this.date = new Date();
 		this.crypted = crypted;
-		// Obtention d'un générateur de clés pour RC4
-		KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		// Spécification longueur de la clé
-		kg.init(128);
-		// Génération de la clé secrète
-		this.sKey = kg.generateKey();
+		this.sKey = key();
+		
 	}
 	
 	/**
@@ -64,12 +55,17 @@ public class Event {
 		this.crypted = crypted;
 		this.name = name;
 		this.date = date;
+		this.sKey = key();
+	}
+	
+	private SecretKey key() throws NoSuchAlgorithmException{
 		// Obtention d'un générateur de clés pour RC4
 		KeyGenerator kg = KeyGenerator.getInstance("RC4");
 		// Spécification longueur de la clé
 		kg.init(128);
 		// Génération de la clé secrète
-		this.sKey = kg.generateKey();
+		return kg.generateKey();
+		
 	}
 	
 	public Date getDate()
@@ -80,6 +76,10 @@ public class Event {
 	public String getName()
 	{
 		return this.name;
+	}
+	
+	public SecretKey getKey(){
+		return sKey;
 	}
 	
 	public boolean isCrypted()
@@ -126,12 +126,7 @@ public class Event {
 		System.out.println("decrytp");
 		this.crypted = false;
 	}
-	
-	/*
-	 * Affiche le name si crypted = false sinon namecrypted
-	 * author : Axel
-	 */
-	
+		
 	private void decryptDate() {
 		// TODO Auto-generated method stub
 		
