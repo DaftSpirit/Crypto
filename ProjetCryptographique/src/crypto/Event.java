@@ -4,7 +4,6 @@ import java.util.Date;
 import java.security.*;
 
 import javax.crypto.*;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Event {
@@ -27,11 +26,11 @@ public class Event {
 		this.crypted = false;
 		this.date = new Date();	//unix time, initialized at the time of creation
 		// Obtention d'un générateur de clés pour RC4
-		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		   // Spécification longueur de la clé
-		   kg.init(128);
-		   // Génération de la clé secrète
-		   this.sKey = kg.generateKey();
+		KeyGenerator kg = KeyGenerator.getInstance("RC4");
+		// Spécification longueur de la clé
+		kg.init(128);
+		// Génération de la clé secrète
+		this.sKey = kg.generateKey();
 	}
 	
 	/**
@@ -46,11 +45,11 @@ public class Event {
 		this.date = new Date();
 		this.crypted = crypted;
 		// Obtention d'un générateur de clés pour RC4
-		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		   // Spécification longueur de la clé
-		   kg.init(128);
-		   // Génération de la clé secrète
-		   this.sKey = kg.generateKey();
+		KeyGenerator kg = KeyGenerator.getInstance("RC4");
+		// Spécification longueur de la clé
+		kg.init(128);
+		// Génération de la clé secrète
+		this.sKey = kg.generateKey();
 	}
 	
 	/**
@@ -66,11 +65,11 @@ public class Event {
 		this.name = name;
 		this.date = date;
 		// Obtention d'un générateur de clés pour RC4
-		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		   // Spécification longueur de la clé
-		   kg.init(128);
-		   // Génération de la clé secrète
-		   this.sKey = kg.generateKey();
+		KeyGenerator kg = KeyGenerator.getInstance("RC4");
+		// Spécification longueur de la clé
+		kg.init(128);
+		// Génération de la clé secrète
+		this.sKey = kg.generateKey();
 	}
 	
 	public Date getDate()
@@ -140,8 +139,11 @@ public class Event {
 
 	private void decryptName() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
 		byte[] buffer = name.getBytes();
+		// Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
 		Cipher rc4 = Cipher.getInstance("RC4");
+		//Obtention de la clé de décryptage
 		Key decryptionKey = new SecretKeySpec(sKey.getEncoded(), sKey.getAlgorithm());
+		// Initialisation du chiffreur en mode dechiffrage avec la clé decryptKey
 	    rc4.init(Cipher.DECRYPT_MODE, decryptionKey);
 	    byte[] plainText = rc4.doFinal(buffer);
 	    name = new String(plainText);	    
