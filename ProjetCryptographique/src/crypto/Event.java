@@ -4,10 +4,12 @@ import java.util.Date;
 import java.security.*;
 
 import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public class Event {
-	
-	private byte[] nameCrypted;
+		
+	private SecretKey sKey;
 	
 	private String name;
 	private Date date;
@@ -17,24 +19,38 @@ public class Event {
 	 * 	public Event()
 	 * 	default constructor for non crypted events
 	 * 	@param null
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public Event()
+	public Event() throws NoSuchAlgorithmException
 	{
 		this.name = "default event";
 		this.crypted = false;
 		this.date = new Date();	//unix time, initialized at the time of creation
+		// Obtention d'un générateur de clés pour RC4
+		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
+		   // Spécification longueur de la clé
+		   kg.init(128);
+		   // Génération de la clé secrète
+		   this.sKey = kg.generateKey();
 	}
 	
 	/**
 	 * public Event(boolean)
 	 * debug constructor for tests and debug
 	 * @param crypted defines if the event is crypted or not
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public Event(boolean crypted)
+	public Event(boolean crypted) throws NoSuchAlgorithmException
 	{
 		this.name = "debug event";
 		this.date = new Date();
 		this.crypted = crypted;
+		// Obtention d'un générateur de clés pour RC4
+		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
+		   // Spécification longueur de la clé
+		   kg.init(128);
+		   // Génération de la clé secrète
+		   this.sKey = kg.generateKey();
 	}
 	
 	/**
@@ -42,12 +58,19 @@ public class Event {
 	 * @param name : the name of the event
 	 * @param date : date of event
 	 * @param crypted : if the event is crypted or not
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public Event(String name, Date date, boolean crypted)
+	public Event(String name, Date date, boolean crypted) throws NoSuchAlgorithmException
 	{
 		this.crypted = crypted;
 		this.name = name;
 		this.date = date;
+		// Obtention d'un générateur de clés pour RC4
+		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
+		   // Spécification longueur de la clé
+		   kg.init(128);
+		   // Génération de la clé secrète
+		   this.sKey = kg.generateKey();
 	}
 	
 	public Date getDate()
@@ -70,6 +93,7 @@ public class Event {
 		encryptName();
 		encryptDate();
 		System.out.println("encrytp");
+		this.crypted = true;
 	}
 
 	private void encryptDate() 
@@ -86,12 +110,6 @@ public class Event {
 	
 	private void encryptName() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException
 	{
-		// Obtention d'un générateur de clés pour RC4
-		   KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		   // Spécification longueur de la clé
-		   kg.init(128);
-		   // Génération de la clé secrète
-		   SecretKey sKey = kg.generateKey();
 		   // Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
 		   Cipher rc4 = Cipher.getInstance("RC4");
 		   // Initialisation du chiffreur en mode chiffrage avec la clé sKey
@@ -99,24 +117,40 @@ public class Event {
 		   // Chiffrage du contenu du String. Au retour de l'appel
 		   // l'objet chiffreur sera remis en son état initial
 		   byte[] c5 = rc4.doFinal(name.getBytes());		
-		   this.nameCrypted = c5;
-		   this.crypted = true;
+		   this.name = new String(c5);
 	}			
 	
+	public void decrypt() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException
+	{
+		decryptName();
+		decryptDate();
+		System.out.println("decrytp");
+		this.crypted = false;
+	}
 	
 	/*
 	 * Affiche le name si crypted = false sinon namecrypted
 	 * author : Axel
 	 */
 	
+	private void decryptDate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void decryptName() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+		byte[] buffer = name.getBytes();
+		Cipher rc4 = Cipher.getInstance("RC4");
+		Key decryptionKey = new SecretKeySpec(sKey.getEncoded(), sKey.getAlgorithm());
+	    rc4.init(Cipher.DECRYPT_MODE, decryptionKey);
+	    byte[] plainText = rc4.doFinal(buffer);
+	    name = new String(plainText);	    
+	}
+
 	@Override
 	public String toString() {
-		if(!this.crypted)
 			return "Event [name=" + name + ", date=" + date.toString() + ", crypted="
-					+ crypted + "]";
-			else
-				return "Event [name=" + nameCrypted + ", date=" + date.toString() + ", crypted="
-				+ crypted + "]";
+					+ crypted + "]";	
 
 	}	
 
