@@ -11,7 +11,10 @@ import javax.crypto.NoSuchPaddingException;
 
 public class Tester {
 
-	public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+	public static void main(String[] args) throws InvalidKeyException,
+			NoSuchAlgorithmException, NoSuchPaddingException,
+			IllegalBlockSizeException, BadPaddingException,
+			InvalidAlgorithmParameterException {
 		Date d1 = new Date();
 		Event e1 = new Event("Event 1", "une description", d1, false);
 		System.out.println(e1.toString());
@@ -19,7 +22,6 @@ public class Tester {
 		System.out.println(e1);
 		e1.decrypt();
 		System.out.println(e1);
-
 
 	}
 
