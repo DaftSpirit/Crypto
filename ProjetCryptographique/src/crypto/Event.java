@@ -59,11 +59,11 @@ public class Event {
 	}
 	
 	private SecretKey key() throws NoSuchAlgorithmException{
-		// Obtention d'un générateur de clés pour RC4
+		// Obtention d'un gÃ©nÃ©rateur de clÃ©s pour RC4
 		KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		// Spécification longueur de la clé
+		// SpÃ©cification longueur de la clÃ©
 		kg.init(128);
-		// Génération de la clé secrète
+		// GÃ©nÃ©ration de la clÃ© secrÃ¨te
 		return kg.generateKey();
 		
 	}
@@ -101,20 +101,20 @@ public class Event {
 		
 	}
 
-	/*
+	/**
 	 * author : Axel
-	 * J'ai copié chapitre II du cour : Chiffrage du contenu d'un String avec RC4
-	 * Après faut voir comment décrypter ce qui est crypter.( sauvegarder la clé avec un return ou une donnée membre ?)
+	 * J'ai copiÃ© chapitre II du cour : Chiffrage du contenu d'un String avec RC4
+	 * AprÃ©s faut voir comment dÃ©crypter ce qui est crypter.( sauvegarder la clÃ© avec un return ou une donnï¿½e membre ?)
 	 */
 	
 	private void encryptName() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException
 	{
-		   // Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
+		   // Obtention d'une instance de Cipher spÃ©cialisÃ©e pour l'algorithme RC4
 		   Cipher rc4 = Cipher.getInstance("RC4");
-		   // Initialisation du chiffreur en mode chiffrage avec la clé sKey
+		   // Initialisation du chiffreur en mode chiffrage avec la clÃ© sKey
 		   rc4.init(Cipher.ENCRYPT_MODE, sKey);
 		   // Chiffrage du contenu du String. Au retour de l'appel
-		   // l'objet chiffreur sera remis en son état initial
+		   // l'objet chiffreur sera remis en son Ã©tat initial
 		   byte[] c5 = rc4.doFinal(name.getBytes());		
 		   this.name = new String(c5);
 	}			
@@ -134,11 +134,11 @@ public class Event {
 
 	private void decryptName() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
 		byte[] buffer = name.getBytes();
-		// Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
+		// Obtention d'une instance de Cipher spÃ©cialisÃ©e pour l'algorithme RC4
 		Cipher rc4 = Cipher.getInstance("RC4");
-		//Obtention de la clé de décryptage
+		//Obtention de la clÃ© de dÃ©cryptage
 		Key decryptionKey = new SecretKeySpec(sKey.getEncoded(), sKey.getAlgorithm());
-		// Initialisation du chiffreur en mode dechiffrage avec la clé decryptKey
+		// Initialisation du chiffreur en mode dechiffrage avec la clÃ© decryptKey
 	    rc4.init(Cipher.DECRYPT_MODE, decryptionKey);
 	    byte[] plainText = rc4.doFinal(buffer);
 	    name = new String(plainText);	    
