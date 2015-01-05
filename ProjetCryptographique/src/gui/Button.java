@@ -1,4 +1,4 @@
-package intergraphique;
+package gui;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
  * @author Axel
  */
 
-public class Bouton extends JButton implements MouseListener{
+public class Button extends JButton implements MouseListener{
 
 	  private String name;
 	  private JFrame f;
@@ -29,7 +29,7 @@ public class Bouton extends JButton implements MouseListener{
 	   * @param pw : Jpassword reference contain the user password
 	   */
 	  
-	  public Bouton(String str, JFrame f, JPasswordField pw){
+	  public Button(String str, JFrame f, JPasswordField pw){
 	    super(str);
 	    this.name = str;
 	    this.f=f;

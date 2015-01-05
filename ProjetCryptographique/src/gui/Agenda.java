@@ -1,4 +1,4 @@
-package intergraphique;
+package gui;
 
 import javax.swing.JFrame;
 

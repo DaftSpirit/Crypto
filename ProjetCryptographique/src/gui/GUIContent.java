@@ -1,4 +1,4 @@
-package intergraphique;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
  * class Panel for Jframe Interface_P
  * @author Axel
  */
-public class Panneau extends JPanel{	
+public class GUIContent extends JPanel{	
 	
 	/**
 	 * pulic panneau(JFrame f)
@@ -20,7 +20,7 @@ public class Panneau extends JPanel{
 	 * @param f : refrence JFrame contains Panneau
 	 */
 	
-	public Panneau(JFrame f){
+	public GUIContent(JFrame f){
 		JLabel l1 = new JLabel("<html>"
 				+ "<h1 style=\"text-align:center;text-indent:25px; font-family:Times new Roman;\">Bonjour</h1><br>"
 				+ "<p style=\"text-align:center; font-family:Times new Roman;font-size:15px\"> * Tapez votre mot de passe *</p><br>"
@@ -29,7 +29,7 @@ public class Panneau extends JPanel{
 				
 		JPasswordField pw = new JPasswordField();
 		
-		Bouton b = new Bouton("Sign In",f,pw);
+		Button b = new Button("Sign In",f,pw);
 		
 		this.setBackground(Color.orange);
 		b.setBackground(Color.red);

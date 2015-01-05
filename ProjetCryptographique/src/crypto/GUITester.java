@@ -8,14 +8,11 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import intergraphique.Interface_P;
+import gui.GUIContainer;
 
-/* Une classe main pour tester
- * auteur: Axel
- * Test le cryptage de name
- */
+/* Une classe main pour tester */
 
-public class Main {
+public class GUITester {
 
 	public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
 		//Interface_P i1 = new Interface_P();

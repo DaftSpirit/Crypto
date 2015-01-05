@@ -11,6 +11,7 @@ public class Event {
 	private SecretKey sKey;
 	
 	private String name;
+	private String description;
 	private Date date;
 	private boolean crypted;
 	
@@ -23,6 +24,7 @@ public class Event {
 	public Event() throws NoSuchAlgorithmException
 	{
 		this.name = "default event";
+		this.setDescription("default event description");
 		this.crypted = false;
 		this.date = new Date();	//unix time, initialized at the time of creation
 		this.sKey = key();
@@ -37,6 +39,7 @@ public class Event {
 	public Event(boolean crypted) throws NoSuchAlgorithmException
 	{
 		this.name = "debug event";
+		this.setDescription("default event description");
 		this.date = new Date();
 		this.crypted = crypted;
 		this.sKey = key();
@@ -50,10 +53,11 @@ public class Event {
 	 * @param crypted : if the event is crypted or not
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public Event(String name, Date date, boolean crypted) throws NoSuchAlgorithmException
+	public Event(String name, String description, Date date, boolean crypted) throws NoSuchAlgorithmException
 	{
 		this.crypted = crypted;
 		this.name = name;
+		this.setDescription(description);
 		this.date = date;
 		this.sKey = key();
 	}
@@ -146,9 +150,17 @@ public class Event {
 
 	@Override
 	public String toString() {
-			return "Event [name=" + name + ", date=" + date.toString() + ", crypted="
+			return "Event [name=" + name + "description=" +description +", date=" + date.toString() + ", crypted="
 					+ crypted + "]";	
 
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}	
 
 }

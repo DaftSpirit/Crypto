@@ -1,4 +1,4 @@
-package intergraphique;
+package gui;
 
 /**
  * class for interface with password 
@@ -8,7 +8,7 @@ package intergraphique;
 import javax.swing.JFrame;
 
 
-public class Interface_P extends JFrame{
+public class GUIContainer extends JFrame{
 		
 	/** 
 	 * Interface_P()
@@ -16,8 +16,8 @@ public class Interface_P extends JFrame{
 	 * @param null
 	 */
 	
-	public Interface_P(){		
-		Panneau p = new Panneau(this);
+	public GUIContainer(){		
+		GUIContent p = new GUIContent(this);
 		
 		//JFrame
 		this.setTitle("Agenda Electronique");
