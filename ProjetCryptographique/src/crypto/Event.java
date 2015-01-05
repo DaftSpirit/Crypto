@@ -150,7 +150,7 @@ public class Event {
 
 	@Override
 	public String toString() {
-			return "Event [name=" + name + "description=" +description +", date=" + date.toString() + ", crypted="
+			return "Event [name=" + name + ", description=" +description +", date=" + date.toString() + ", crypted="
 					+ crypted + "]";	
 
 	}

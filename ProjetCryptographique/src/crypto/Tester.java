@@ -13,7 +13,7 @@ public class Tester {
 
 	public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
 		Date d1 = new Date();
-		Event e1 = new Event("Event 1", d1, false);
+		Event e1 = new Event("Event 1", "une description", d1, false);
 		System.out.println(e1.toString());
 		e1.encrypt();
 		System.out.println(e1);
