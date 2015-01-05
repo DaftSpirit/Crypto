@@ -18,7 +18,7 @@ public class Bouton extends JButton implements MouseListener{
 	  private JFrame f;
 	  private JPasswordField pw;
 	  
-	  //le mot de passe se trouve ici -> il faudra bien sur le déplacer
+	  //le mot de passe se trouve ici -> il faudra bien sur le dÃ©placer
 	  private String password="motdepasse";		
 	 
 	

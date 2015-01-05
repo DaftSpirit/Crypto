@@ -6,7 +6,7 @@ public class Agenda extends JFrame{
 	
 	public Agenda(){
 		//JFrame
-		this.setTitle("Agenda électronique");
+		this.setTitle("Agenda Ã©lectronique");
 		this.setSize(600,800);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
