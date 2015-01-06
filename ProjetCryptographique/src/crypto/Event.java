@@ -8,7 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Event {
 
-	private SecretKey sKey;
+	private SecretKey Key;
 
 	private String name;
 	private String description;
@@ -27,7 +27,7 @@ public class Event {
 		this.crypted = false;
 		this.date = new Date(); // unix time, initialized at the time of
 								// creation
-		this.sKey = key();
+		//this.Key = key();
 	}
 
 	/**
@@ -42,8 +42,7 @@ public class Event {
 		this.setDescription("default event description");
 		this.date = new Date();
 		this.crypted = crypted;
-		this.sKey = key();
-
+		//this.Key = key();
 	}
 
 	/**
@@ -63,31 +62,26 @@ public class Event {
 		this.name = name;
 		this.setDescription(description);
 		this.date = date;
-		this.sKey = key();
+		//this.sKey = key();
 	}
 
-	private SecretKey key() throws NoSuchAlgorithmException {
-		// Obtention d'un générateur de clés pour RC4
-		KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		// Spécification longueur de la clé
-		kg.init(128);
-		// Génération de la clé secrète
-		return kg.generateKey();
-
-	}
-
+	/**
+	 * @return the date
+	 */
 	public Date getDate() {
 		return this.date;
 	}
 
+	/**
+	 * @return the name of event
+	 */
 	public String getName() {
 		return this.name;
 	}
 
-	public SecretKey getKey() {
-		return sKey;
-	}
-
+	/**
+	 * @return true if is crypted
+	 */
 	public boolean isCrypted() {
 		return this.crypted;
 	}
@@ -115,17 +109,13 @@ public class Event {
 	private void encryptName() throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException,
 			IllegalBlockSizeException, BadPaddingException {
-		// Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
-		Cipher rc4 = Cipher.getInstance("RC4");
-		// Initialisation du chiffreur en mode chiffrage avec la clé sKey
-		rc4.init(Cipher.ENCRYPT_MODE, sKey);
-		// Chiffrage du contenu du String. Au retour de l'appel
-		// l'objet chiffreur sera remis en son état initial
-		byte[] c5 = rc4.doFinal(name.getBytes());
-		this.name = new String(c5);
+		Crypter cr = new Crypter("motdepasse");
+		byte[] c5 = cr.encrypt(this.name);
+		this.name = c5.toString();
+		System.out.println(c5);
 	}
 
-	public void decrypt() throws InvalidKeyException, NoSuchAlgorithmException,
+	/*public void decrypt() throws InvalidKeyException, NoSuchAlgorithmException,
 			NoSuchPaddingException, IllegalBlockSizeException,
 			BadPaddingException, InvalidAlgorithmParameterException {
 		decryptName();
@@ -139,7 +129,7 @@ public class Event {
 
 	}
 
-	private void decryptName() throws NoSuchAlgorithmException,
+	/*private void decryptName() throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException,
 			BadPaddingException {
@@ -154,7 +144,7 @@ public class Event {
 		rc4.init(Cipher.DECRYPT_MODE, decryptionKey);
 		byte[] plainText = rc4.doFinal(buffer);
 		name = new String(plainText);
-	}
+	}*/
 
 	@Override
 	public String toString() {

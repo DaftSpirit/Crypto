@@ -15,16 +15,16 @@ public class Tester {
 			NoSuchAlgorithmException, NoSuchPaddingException,
 			IllegalBlockSizeException, BadPaddingException,
 			InvalidAlgorithmParameterException {
-	/*	Date d1 = new Date();
+		Date d1 = new Date();
 		Event e1 = new Event("Event 1", "une description", d1, false);
 		System.out.println(e1.toString());
 		e1.encrypt();
 		System.out.println(e1);
-		e1.decrypt();
-		System.out.println(e1);
-*/
-		Crypter cr = new Crypter("popoyhyyyyyyyy");
-		System.out.println(cr.decrypt(cr.encrypt("Taiii")));
+		/*e1.decrypt();
+		System.out.println(e1);*/
+
+		/*Crypter cr = new Crypter("popoyhyyyyyyyy");
+		System.out.println(cr.decrypt(cr.encrypt("Taiii")));*/
 	}
 
 }
