@@ -17,39 +17,52 @@ public class Crypter {
 	private Key sKey;
 
 	//private String target;
-	
+	/**
+	 * Generate the key with the password using the RC4 algorithm
+	 * @param password: password of the user
+	 * @throws NoSuchAlgorithmException
+	 */
 	public Crypter(String password) throws NoSuchAlgorithmException{
 		//this.target=aTarget;
 		this.sKey=new SecretKeySpec(password.getBytes(),"RC4");
 	}
-	
-	private SecretKey generateSecretKey() throws NoSuchAlgorithmException{
-		// Obtention d'un générateur de clés pour RC4
-		KeyGenerator kg = KeyGenerator.getInstance("RC4");
-		// Spécification longueur de la clé
-		kg.init(128);
-		// Génération de la clé secrète
-		return kg.generateKey();
-		
-	}
 
+	/**
+	 * Encrypt the String
+	 * @param name: name of the event
+	 * @return The encrypted String as a byte[]
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 */
 	public byte[] encrypt(String name) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
-		  // Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
+		  // Getting a Cipher instanciation specialised in the RC4 algorithm
 		   Cipher rc4 = Cipher.getInstance("RC4");
-		   // Initialisation du chiffreur en mode chiffrage avec la clé sKey
+		   // Initialisation of the crypter to crypt with the sKey
 		   rc4.init(Cipher.ENCRYPT_MODE, this.sKey);
-		   // Chiffrage du contenu du String. Au retour de l'appel
-		   // l'objet chiffreur sera remis en son état initial
+		   // Crypting the String
+		   // The crypting object will be initialised after the call.
 		   return rc4.doFinal(name.getBytes());		
 	}
 	
+	/**
+	 * Decrypt the String
+	 * @param buffer: the encrypted String
+	 * @return The decrypted String
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 */
 	public String decrypt(byte[] buffer) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
 		
-		// Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
+		// Getting a Cipher instanciation specialised in the RC4 algorithm
 		Cipher rc4 = Cipher.getInstance("RC4");
-		//Obtention de la clé de décryptage
-		//Key decryptionKey = new SecretKeySpec(this.sKey.getEncoded(), this.sKey.getAlgorithm());
-		// Initialisation du chiffreur en mode dechiffrage avec la clé decryptKey
+		// Getting the decrypting key
+		// Initialisation of the crypter to decrypt with the decrypting key
 	    rc4.init(Cipher.DECRYPT_MODE, this.sKey);
 	    byte[] plainText = rc4.doFinal(buffer);
 	    return new String(plainText);	    
