@@ -19,7 +19,7 @@ public class GUITester {
 			InvalidAlgorithmParameterException {
 		// Interface_P i1 = new Interface_P();
 		Date d1 = new Date();	
-		Event e1 = new Event("Event 1", "une description", d1, false);
+		EventCrypter e1 = new EventCrypter("Event 1", "une description", d1, false);
 		System.out.println(e1.toString()); 	// Event uncrypted
 		e1.encrypt();
 		System.out.println(e1);				// Event encrypted
