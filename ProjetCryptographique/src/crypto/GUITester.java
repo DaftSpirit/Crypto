@@ -18,13 +18,14 @@ public class GUITester {
 			IllegalBlockSizeException, BadPaddingException,
 			InvalidAlgorithmParameterException {
 		// Interface_P i1 = new Interface_P();
-		Date d1 = new Date();
+		Date d1 = new Date();	
 		Event e1 = new Event("Event 1", "une description", d1, false);
-		System.out.println(e1.toString());
+		System.out.println(e1.toString()); 	// Event uncrypted
 		e1.encrypt();
-		System.out.println(e1);
-		/*e1.decrypt();
-		System.out.println(e1);*/
+		System.out.println(e1);				// Event encrypted
+		e1.decrypt();
+		System.out.println(e1);				// Event decrypted
+		
 
 		/*Crypter cr = new Crypter("popoyhyyyyyyyy");
 		System.out.println(cr.decrypt(cr.encrypt("Taiii")));*/

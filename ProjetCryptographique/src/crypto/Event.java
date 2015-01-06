@@ -9,6 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class Event {
 
 	private SecretKey Key;
+	private String password = "password";
+	private byte[] cryptedName;
 
 	private String name;
 	private String description;
@@ -101,21 +103,35 @@ public class Event {
 	}
 
 	/**
-	 * author : Axel J'ai copié chapitre II du cour : Chiffrage du contenu d'un
-	 * String avec RC4 Aprés faut voir comment décrypter ce qui est crypter.(
-	 * sauvegarder la clé avec un return ou une donn�e membre ?)
+	 * @author scrutch
+	 * Instanciate the crypted name and put its result in the variable name
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
 	 */
-
 	private void encryptName() throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException,
 			IllegalBlockSizeException, BadPaddingException {
-		Crypter cr = new Crypter("motdepasse");
-		byte[] c5 = cr.encrypt(this.name);
-		this.name = c5.toString();
-		System.out.println(c5);
+		Crypter cr = new Crypter(password);
+		cryptedName = cr.encrypt(this.name);
+		this.name = cryptedName.toString();
+		//System.out.println(cryptedName);
+		//System.out.println(name);
 	}
-
-	/*public void decrypt() throws InvalidKeyException, NoSuchAlgorithmException,
+	
+	/**
+	 * @author scrutch
+	 * Takes the crypted name, decrypts it and put it in the variable name
+	 * @throws InvalidKeyException
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 * @throws InvalidAlgorithmParameterException
+	 */
+	public void decrypt() throws InvalidKeyException, NoSuchAlgorithmException,
 			NoSuchPaddingException, IllegalBlockSizeException,
 			BadPaddingException, InvalidAlgorithmParameterException {
 		decryptName();
@@ -129,10 +145,16 @@ public class Event {
 
 	}
 
-	/*private void decryptName() throws NoSuchAlgorithmException,
+	private void decryptName() throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException,
 			InvalidAlgorithmParameterException, IllegalBlockSizeException,
 			BadPaddingException {
+		Crypter cr = new Crypter(password);
+		String decryptingName = cr.decrypt(cryptedName);
+		//System.out.println(decryptingName);
+		this.name = decryptingName;
+		//System.out.println(name);
+		/*
 		byte[] buffer = name.getBytes();
 		// Obtention d'une instance de Cipher spécialisée pour l'algorithme RC4
 		Cipher rc4 = Cipher.getInstance("RC4");
@@ -144,7 +166,8 @@ public class Event {
 		rc4.init(Cipher.DECRYPT_MODE, decryptionKey);
 		byte[] plainText = rc4.doFinal(buffer);
 		name = new String(plainText);
-	}*/
+		*/
+	}
 
 	@Override
 	public String toString() {
