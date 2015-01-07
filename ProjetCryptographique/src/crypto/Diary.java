@@ -15,7 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class Diary {
 
-	private Map<String, EventCrypter> events;
+	private Map<String, Event> events;
 	private SecretKeySpec key;
 
 	/**
@@ -25,7 +25,7 @@ public class Diary {
 	 * @param event
 	 *            : the object event
 	 */
-	public void addEvent(String name, EventCrypter event) {
+	public void addEvent(String name, Event event) {
 		this.events.put(name, event);
 	}
 
