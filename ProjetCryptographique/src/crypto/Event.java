@@ -16,9 +16,9 @@ public class Event {
 	}
 
 	public Event(String name, String description, Date date) {
-		this.name = "debug event";
-		this.description = "default event description";
-		this.date = new Date();
+		this.name = name;
+		this.description = description;
+		this.date = date;
 	}
 
 	@Override

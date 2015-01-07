@@ -3,6 +3,7 @@ package crypto;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -28,6 +29,28 @@ public class Crypter {
 	}
 
 	/**
+	 * Encrypt the Event
+	 * @param e : 
+	 * 		Event to encrypt
+	 * @return Event encrypted
+	 * @throws InvalidKeyException
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 */
+	public CryptedEvent encrypted(Event e) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		byte[] nameCrypted=encrypt(e.name);
+		CryptedEvent ce = new CryptedEvent(nameCrypted.toString(),"description",new Date(),nameCrypted);
+		return ce;		
+	}
+	
+	public Event decrypted(CryptedEvent ce) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		Event e = new Event(decrypt(ce.nameCrytped),"description",new Date());
+		return e;		
+	}
+	
+	/**
 	 * Encrypt the String
 	 * @param name: name of the event
 	 * @return The encrypted String as a byte[]
@@ -37,7 +60,7 @@ public class Crypter {
 	 * @throws IllegalBlockSizeException
 	 * @throws BadPaddingException
 	 */
-	public byte[] encrypt(String name) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
+	private byte[] encrypt(String name) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
 		  // Getting a Cipher instanciation specialised in the RC4 algorithm
 		   Cipher rc4 = Cipher.getInstance("RC4");
 		   // Initialisation of the crypter to crypt with the sKey
@@ -57,7 +80,7 @@ public class Crypter {
 	 * @throws IllegalBlockSizeException
 	 * @throws BadPaddingException
 	 */
-	public String decrypt(byte[] buffer) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
+	private String decrypt(byte[] buffer) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
 		
 		// Getting a Cipher instanciation specialised in the RC4 algorithm
 		Cipher rc4 = Cipher.getInstance("RC4");
