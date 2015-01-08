@@ -51,7 +51,7 @@ public class GUITester {
 			//ObjectInputStream ois;
 		
 			
-			FileWriter fw = new FileWriter("agenda.txt", true);
+			FileWriter fw = new FileWriter("agenda.txt", false);
 			BufferedWriter output = new BufferedWriter(fw);
 			
 			Iterator<AbsEvent> it = diary.iterator();
