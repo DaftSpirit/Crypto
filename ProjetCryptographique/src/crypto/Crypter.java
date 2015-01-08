@@ -146,9 +146,9 @@ public class Crypter {
 	private byte[] encryptDate(Date date) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
 		// Getting a Cipher instanciation specialised in the RC4 algorithm
 		Cipher rc4 = Cipher.getInstance("RC4");
-		// Getting the decrypting key
-		// Initialisation of the crypter to decrypt with the decrypting key
-		rc4.init(Cipher.DECRYPT_MODE, this.sKey);
+		// Getting the encrypting key
+		// Initialisation of the crypter to encrypt with the encrypting key
+		rc4.init(Cipher.ENCRYPT_MODE, this.sKey);
 		// creating a byte[] from date 
 		byte[] dateTxt = new Long(date.getTime()).toString().getBytes();
 		byte[] plainText = rc4.doFinal(dateTxt);

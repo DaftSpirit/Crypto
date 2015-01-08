@@ -46,11 +46,21 @@ public class GUITester {
 			// System.out.println(e2);
 
 			System.out.println(diary.toString());
+			
+			/* Writing in a file the diary */
+			ObjectInputStream ois;
+			ObjectOutputStream oos;
+			oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("agenda.txt"))));
+			
+			oos.writeObject(diary);
+			oos.close();
+			
+			
+
 		} catch (NoSuchAlgorithmException e) {
 			
 			e.printStackTrace();
-		}
-		catch (NoSuchPaddingException e) {
+		} catch (NoSuchPaddingException e) {
 			
 			e.printStackTrace();
 		} catch (IllegalBlockSizeException e) {
@@ -62,29 +72,17 @@ public class GUITester {
 		} catch (InvalidKeyException e) {
 			
 			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 
 
-		// ObjectInputStream ois;
-		// ObjectOutputStream oos;
-		//
-		// try {
-		// oos=new ObjectOutputStream(
-		// new BufferedOutputStream(
-		// new FileOutputStream(
-		// new File("agenda.txt"))));
-		// oos.writeObject(diary);
-		// oos.close();
-		//
-		//
-		// } catch (FileNotFoundException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+
 	}
 
 }
