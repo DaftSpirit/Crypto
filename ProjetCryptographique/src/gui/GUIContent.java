@@ -23,12 +23,14 @@ public class GUIContent extends JPanel {
 	 */
 
 	public GUIContent(JFrame f) {
-		JLabel l1 = new JLabel(
+		JLabel l1 = new JLabel("Welcome");
+				/*
 				"<html>"
-						+ "<h1 style=\"text-align:center;text-indent:25px; font-family:Times new Roman;\">Bonjour</h1><br>"
-						+ "<p style=\"text-align:center; font-family:Times new Roman;font-size:15px\"> * Tapez votre mot de passe *</p><br>"
+						+ "<h1 style=\"text-align:center;text-indent:25px; font-family:Lucida Console;\">Bonjour</h1><br>"
+						+ "<p style=\"text-align:center; font-family:Lucida Console;font-size:15px\"> * Tapez votre mot de passe *</p><br>"
 						+ "<br></html>");
-		JLabel l3 = new JLabel("Mot de passe: ");
+						*/
+		JLabel l3 = new JLabel("Password: ");
 
 		JPasswordField pw = new JPasswordField();
 

@@ -19,8 +19,8 @@ public class GUIContainer extends JFrame {
 		GUIContent p = new GUIContent(this);
 
 		// JFrame
-		this.setTitle("Agenda Electronique");
-		this.setSize(300, 200);
+		this.setTitle("Diary");
+		this.setSize(600, 800);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
