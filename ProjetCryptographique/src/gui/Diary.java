@@ -2,9 +2,9 @@ package gui;
 
 import javax.swing.JFrame;
 
-public class Agenda extends JFrame {
+public class Diary extends JFrame {
 
-	public Agenda() {
+	public Diary() {
 		// JFrame
 		this.setTitle("Diary");
 		this.setSize(600, 800);
