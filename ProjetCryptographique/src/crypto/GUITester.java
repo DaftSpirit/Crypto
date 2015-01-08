@@ -1,5 +1,7 @@
 package crypto;
 
+import gui.GUIContainer;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -15,7 +17,7 @@ public class GUITester {
 			NoSuchAlgorithmException, NoSuchPaddingException,
 			IllegalBlockSizeException, BadPaddingException,
 			InvalidAlgorithmParameterException {
-		// Interface_P i1 = new Interface_P();
+		GUIContainer i1 = new GUIContainer();
 		Crypter cr = new Crypter("password");
 		Date d1 = new Date();
 		Event e1 = new Event("Event 1", "une description", d1);
