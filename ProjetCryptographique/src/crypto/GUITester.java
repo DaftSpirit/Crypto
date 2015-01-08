@@ -15,7 +15,9 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -52,7 +54,12 @@ public class GUITester {
 			ObjectOutputStream oos;
 			oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("agenda.txt"))));
 			
-			oos.writeObject(diary);
+			Iterator<Entry<String, AbsEvent>> it = diary.entrySet().iterator();
+			while(it.hasNext())
+			{
+				oos.writeObject(it.next());
+			}
+			//oos.writeObject(diary);
 			oos.close();
 			
 			
