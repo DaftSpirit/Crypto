@@ -148,7 +148,7 @@ public class Crypter {
 		Cipher rc4 = Cipher.getInstance("RC4");
 		// Getting the decrypting key
 		// Initialisation of the crypter to decrypt with the decrypting key
-		rc4.init(Cipher.DECRYPT_MODE, this.sKey);
+		rc4.init(Cipher.ENCRYPT_MODE, this.sKey);
 		// creating a byte[] from date 
 		byte[] dateTxt = new Long(date.getTime()).toString().getBytes();
 		byte[] plainText = rc4.doFinal(dateTxt);
