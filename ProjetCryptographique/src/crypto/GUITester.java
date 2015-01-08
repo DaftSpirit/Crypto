@@ -61,13 +61,15 @@ public class GUITester {
 			oos.close();
 			
 			/* Reading the diary */
-			
+			File reader = new File("agenda.txt");
 			ObjectInputStream ois = new ObjectInputStream(
-					new BufferedInputStream(new FileInputStream("agenda.txt")));
+					new BufferedInputStream(new FileInputStream(reader)));
 			
-			Event e = (Event)(ois.readObject());
-			
-			System.out.println("Event read : " + e);
+			AbsEvent e;
+			while((e = (AbsEvent)(ois.readObject())) != null)
+			{
+				System.out.println("Event read : " + e);	
+			}
 			ois.close();
 			
 
