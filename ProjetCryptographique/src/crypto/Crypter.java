@@ -15,7 +15,6 @@ public class Crypter {
 
 	private Key sKey;
 
-	// private String target;
 	/**
 	 * Generate the key with the password using the RC4 algorithm
 	 * 
@@ -47,6 +46,8 @@ public class Crypter {
 		byte[] descriptionCrypted = encrypt(e.description);
 		byte[] dateCrypted = encryptDate(e.date);
 
+		//wipping Event e :
+		e=new Event(null, null, null);
 		return new EventCrypted(nameCrypted, descriptionCrypted, dateCrypted);
 	}
 
@@ -61,7 +62,7 @@ public class Crypter {
 	}
 
 	/**
-	 * Encrypt the String
+	 * Encrypt a String
 	 * 
 	 * @param name
 	 *            : name of the event
@@ -85,7 +86,7 @@ public class Crypter {
 	}
 
 	/**
-	 * Decrypt the String
+	 * Decrypt a String
 	 * 
 	 * @param buffer
 	 *            : the encrypted String
@@ -107,7 +108,17 @@ public class Crypter {
 		byte[] plainText = rc4.doFinal(buffer);
 		return new String(plainText);
 	}
-
+	
+	/**
+	 * Decrypt a date
+	 * @param buffer : the encrypted date;
+	 * @return A new Date pointing the same time as buffer
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 * @throws InvalidKeyException
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 */
 	private Date decryptDate(byte[] buffer) throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException,
 			IllegalBlockSizeException, BadPaddingException {
@@ -122,15 +133,25 @@ public class Crypter {
 		return new Date(date);
 	}
 
+	/**
+	 * Encrypt a date
+	 * @param date	: Event date
+	 * @return	the encrypted Date as a byte[]
+	 * @throws IllegalBlockSizeException
+	 * @throws BadPaddingException
+	 * @throws InvalidKeyException
+	 * @throws NoSuchAlgorithmException
+	 * @throws NoSuchPaddingException
+	 */
 	private byte[] encryptDate(Date date) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
 		// Getting a Cipher instanciation specialised in the RC4 algorithm
 		Cipher rc4 = Cipher.getInstance("RC4");
 		// Getting the decrypting key
 		// Initialisation of the crypter to decrypt with the decrypting key
 		rc4.init(Cipher.DECRYPT_MODE, this.sKey);
+		// creating a byte[] from date 
 		byte[] dateTxt = new Long(date.getTime()).toString().getBytes();
 		byte[] plainText = rc4.doFinal(dateTxt);
 		return plainText;
 	}
-
 }
