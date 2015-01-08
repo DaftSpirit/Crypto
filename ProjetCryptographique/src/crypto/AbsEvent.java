@@ -1,5 +1,10 @@
 package crypto;
 
-public class AbsEvent {
+
+/**
+ * @author gael
+ */
+public abstract class AbsEvent{
+
 
 }
