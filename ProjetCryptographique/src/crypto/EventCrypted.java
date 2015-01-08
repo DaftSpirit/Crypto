@@ -2,7 +2,7 @@ package crypto;
 
 
 
-public class EventCrypted extends Event {
+public class EventCrypted extends AbsEvent {
 	private byte[] name;
 	private byte[] description;
 	private byte[] date;
@@ -17,10 +17,10 @@ public class EventCrypted extends Event {
 	@Override
 	public String toString() {
 
-		return "Event [name=" + name.toString() + ", description=" + description.toString()
-				+ ", date=" + date.toString() + ", CRYPTED]";
+		return "[name=" + name.toString() + ", description=" + description.toString()
+				+ ", date=" + date.toString() + ", CRYPTED]\n";
 	}
-
+	
 	public byte[] getName() {
 		return name;
 	}
