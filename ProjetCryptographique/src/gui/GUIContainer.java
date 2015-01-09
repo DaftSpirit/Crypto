@@ -7,6 +7,12 @@ package gui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  *
@@ -63,6 +69,21 @@ public class GUIContainer extends javax.swing.JFrame {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} catch (InvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalBlockSizeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (BadPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
             }
         });
@@ -79,6 +100,21 @@ public class GUIContainer extends javax.swing.JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalBlockSizeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (BadPaddingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -134,7 +170,7 @@ public class GUIContainer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void buttonMouseClicked(java.awt.event.MouseEvent evt) throws FileNotFoundException, ClassNotFoundException, IOException {                                    
+    private void buttonMouseClicked(java.awt.event.MouseEvent evt) throws FileNotFoundException, ClassNotFoundException, IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {                                    
         char[] passwordEnter = passwordField.getPassword();
         String pass = new String(passwordEnter);
         if(pass.equals("password")){
@@ -149,7 +185,7 @@ public class GUIContainer extends javax.swing.JFrame {
             
     }                                 
 
-    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) throws FileNotFoundException, ClassNotFoundException, IOException {                                         
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) throws FileNotFoundException, ClassNotFoundException, IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {                                         
         if(evt.getKeyChar()=='\n'){
             char[] passwordEnter = passwordField.getPassword();
             String pass = new String(passwordEnter);

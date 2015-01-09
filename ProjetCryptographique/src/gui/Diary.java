@@ -9,13 +9,19 @@ import static java.lang.Integer.valueOf;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.table.DefaultTableModel;
 
 import crypto.AbsEvent;
+import crypto.Crypter;
 import crypto.Event;
 import crypto.EventCrypted;
 
@@ -36,17 +42,49 @@ public class Diary extends javax.swing.JFrame {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws FileNotFoundException
+	 * @throws NoSuchAlgorithmException 
+	 * @throws BadPaddingException 
+	 * @throws IllegalBlockSizeException 
+	 * @throws NoSuchPaddingException 
+	 * @throws InvalidKeyException 
 	 */
 
 	public Diary() throws FileNotFoundException, ClassNotFoundException,
-			IOException {
+			IOException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		initComponents();
-		//Memory.writeToFile(diary);
+		
+		
+		refresh();
+//		diary = Memory.readFromFile();
+//		Iterator<AbsEvent> it = diary.iterator();
+//		while (it.hasNext()) {
+//			AbsEvent tmp = it.next();
+//			//System.out.println(tmp);
+//			if (!tmp.isCrypted()) {
+//				Event tmp2 = (Event) tmp;
+//				model.addRow(new Object[] { tmp2.getName(),
+//						tmp2.getDescription(), tmp2.getDate().toString(),
+//						String.valueOf(tmp2.getLength()) });
+//			} else {
+//				EventCrypted tmp2 = (EventCrypted) tmp;
+//				Crypter cr = new Crypter("password");
+//				Event tmp3 = cr.decryptEvent(tmp2);
+//				model.addRow(new Object[] { tmp3.getName(),
+//						tmp3.getDescription(), tmp3.getDate().toString(),
+//						String.valueOf(tmp3.getLength()) });
+//
+//			}
+//		}
+		
+	}
+	
+	private void refresh() throws FileNotFoundException, ClassNotFoundException, IOException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
 		diary = Memory.readFromFile();
+		clean();
 		Iterator<AbsEvent> it = diary.iterator();
 		while (it.hasNext()) {
 			AbsEvent tmp = it.next();
-			System.out.println(tmp);
+			//System.out.println(tmp);
 			if (!tmp.isCrypted()) {
 				Event tmp2 = (Event) tmp;
 				model.addRow(new Object[] { tmp2.getName(),
@@ -54,13 +92,25 @@ public class Diary extends javax.swing.JFrame {
 						String.valueOf(tmp2.getLength()) });
 			} else {
 				EventCrypted tmp2 = (EventCrypted) tmp;
-				// Crypter cr = new Crypter("password");
-				// Event tmp3 = decryptEvent(tmp2);
+				Crypter cr = new Crypter("password");
+				Event tmp3 = cr.decryptEvent(tmp2);
+				model.addRow(new Object[] { tmp3.getName(),
+						tmp3.getDescription(), tmp3.getDate().toString(),
+						String.valueOf(tmp3.getLength()) });
 
 			}
-			// model.addRow(rowData);
 		}
-		
+	}
+	
+//	private int count(){
+//		System.out.println(model.getRowCount());
+//		return model.getRowCount();
+//	}
+	
+	private void clean(){
+		for(int i = 0;i < model.getRowCount();i++){
+			model.removeRow(i);
+		}
 	}
 
 	/**
@@ -145,6 +195,24 @@ public class Diary extends javax.swing.JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalBlockSizeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (BadPaddingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -902,16 +970,24 @@ public class Diary extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void jButton1MouseClicked(java.awt.event.MouseEvent evt)
-			throws FileNotFoundException, IOException {// GEN-FIRST:event_jButton1MouseClicked
+			throws FileNotFoundException, IOException, InvalidKeyException, ClassNotFoundException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {// GEN-FIRST:event_jButton1MouseClicked
 		Event eventCreated = new Event(eventName.getText(),
 				description.getText(), giveDateEvent(), giveDateEnd());
 		if (!cryptEvent.isSelected()) {
 
 			diary.add(eventCreated);
 			Memory.writeToFile(diary);
-			model.addRow(new Object[] { eventCreated.getName(),
-					eventCreated.getDescription(), eventCreated.getDate(), eventCreated.getLength() });
+			//model.addRow(new Object[] { eventCreated.getName(),
+			//		eventCreated.getDescription(), eventCreated.getDate(), eventCreated.getLength() });
 		}
+		else{
+			diary.add(eventCreated);
+			Memory.writeToFile(diary);
+
+		}
+		
+		//model.removeRow(i);
+		refresh();
 
 	}// GEN-LAST:event_jButton1MouseClicked
 
