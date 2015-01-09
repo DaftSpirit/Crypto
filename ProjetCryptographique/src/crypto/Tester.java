@@ -35,7 +35,7 @@ public class Tester {
 
 			// System.out.println(ce);
 			Event e2 = cr.decryptEvent(ce);
-			System.out.println(e2);
+			//System.out.println(e2);
 
 			/* Writing events to file */
 			Memory.writeToFile(diary);
