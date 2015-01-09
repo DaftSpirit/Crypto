@@ -26,6 +26,7 @@ import crypto.EventCrypted;
 public class Diary extends javax.swing.JFrame {
 
     private DefaultTableModel model;
+    //sdjkg
     private ArrayList<AbsEvent> diary = new ArrayList<AbsEvent>();
     /**
      * Creates new form Diary
