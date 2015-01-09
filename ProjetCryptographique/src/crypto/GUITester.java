@@ -43,6 +43,7 @@ public class GUITester {
 			System.out.println(e2);
 
 			/* Writing in a file the diary */
+//			System.out.println("*********** WRITING EVENTS TO FILE ***********");
 //			ObjectOutputStream oos = new ObjectOutputStream(
 //					new BufferedOutputStream(new FileOutputStream(new File(
 //							"agenda.txt"))));
@@ -58,13 +59,20 @@ public class GUITester {
 			ObjectInputStream ois = new ObjectInputStream(
 					new BufferedInputStream(new FileInputStream(reader)));
 
-			System.out.println("*********** From file ***********");
+			System.out.println("*********** READING EVENTS FROM FILE ***********");
 			int lineToRead = (int)ois.readInt();
-			for(int i=0;i<lineToRead;i++) {
-				System.out.println(((AbsEvent)ois.readObject()).toString());
-			}
 			
+			// testing adding event to a new arrayList from file
+			AbsEvent eventLoaded;
+			ArrayList<AbsEvent> loadedList = new ArrayList<AbsEvent>();
+			for(int i=0;i<lineToRead;i++) {
+//				System.out.println(((AbsEvent)ois.readObject()).toString());
+				eventLoaded = (AbsEvent)ois.readObject();	//reading event
+				loadedList.add(eventLoaded);				//adding event to the new arrayList
+			}
 			ois.close();
+			System.out.println("\t ArrayList composed from file");
+			System.out.println(loadedList.toString());
 
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
