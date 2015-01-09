@@ -109,7 +109,7 @@ public class Diary extends javax.swing.JFrame {
         agenda.getColumnModel().getColumn(0).setPreferredWidth(100);
         agenda.setRowHeight(40);
         model = (DefaultTableModel) agenda.getModel();
-        diary = Memory.readFromFile();
+        //diary = Memory.readFromFile();
         Iterator<AbsEvent> it = diary.iterator();
         while(it.hasNext()){
             AbsEvent tmp = it.next();

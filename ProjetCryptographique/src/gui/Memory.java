@@ -15,7 +15,10 @@ import java.util.Iterator;
 import crypto.AbsEvent;
 /**
  * Abstract class used to save and load events to/from a file
- * @author gael
+ * The first line of the file is the number of events saved in it
+ * Then events are pushed as Objects in the file.
+ * 
+ * @authors gael, joris
  *
  */
 public abstract class  Memory {
@@ -24,7 +27,7 @@ public abstract class  Memory {
 	
 	/**
 	 * Save the ArrayList passed in @param to the file
-	 * @param the ArrayList containing the events will be saved to disk
+	 * @param the ArrayList containing the events which will be saved to disk
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -41,7 +44,7 @@ public abstract class  Memory {
 	
 	/**
 	 * Return the ArrayList saved in the file
-	 * @return	the ArrayList containing the events
+	 * @return the ArrayList containing the events from the file
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -60,7 +63,5 @@ public abstract class  Memory {
 		ois.close();
 		return list;
 	}
-	
-	
 
 }
