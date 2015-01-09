@@ -79,6 +79,11 @@ public class Diary extends javax.swing.JFrame {
 	}
 	
 	private void refresh() throws FileNotFoundException, ClassNotFoundException, IOException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		
+		/* Initialisation Obligatoire pour eviter les exceptions des File */
+		diary.add((AbsEvent)new Event());
+		Memory.writeToFile(diary);
+		
 		diary = Memory.readFromFile();
 		clean();
 		Iterator<AbsEvent> it = diary.iterator();
@@ -351,7 +356,24 @@ public class Diary extends javax.swing.JFrame {
 		jButton2.setText("Find");
 		jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jButton2MouseClicked(evt);
+				try {
+					jButton2MouseClicked(evt);
+				} catch (InvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalBlockSizeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (BadPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -1002,14 +1024,39 @@ public class Diary extends javax.swing.JFrame {
 
 	}// GEN-LAST:event_jButton1MouseClicked
 
-	private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton2MouseClicked
+	private void jButton2MouseClicked(java.awt.event.MouseEvent evt) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {// GEN-FIRST:event_jButton2MouseClicked
 		Date d1 = giveDateFind();
-		
+		Iterator<AbsEvent> it = diary.iterator();
+		while(it.hasNext())
+		{
+			AbsEvent ae = it.next();
+			if(ae.isCrypted())
+			{
+				Crypter cr = new Crypter("password");
+				Event eve = cr.decryptEvent((EventCrypted)ae);
+				if(eve.getDate() == d1)
+				{
+					model.addRow(new Object[] { eve.getName(),
+							eve.getDescription(), eve.getDate().toString(),
+							String.valueOf(eve.getLength()) });
+				}
+			}
+			else
+			{
+				Event evnt = (Event)ae;
+				if(evnt.getDate()== d1)
+				{
+					model.addRow(new Object[] { evnt.getName(),
+							evnt.getDescription(), evnt.getDate().toString(),
+							String.valueOf(evnt.getLength()) });
+				}
+			}
+		}
 		System.out.println(d1);
 	}// GEN-LAST:event_jButton2MouseClicked
 
 	private Date giveDateEvent() {
-		Date d = new Date(valueOf(year.getText()),
+		Date d = new Date(valueOf(year.getText())-1900,
 				valueOf(month.getText()) - 1, valueOf(day.getText()),
 				valueOf(hours.getText()), valueOf(minute.getText()));
 		return d;
@@ -1019,6 +1066,7 @@ public class Diary extends javax.swing.JFrame {
 		Date d = new Date(valueOf(yearF.getText()),
 				valueOf(monthF.getText()) - 1, valueOf(dayF.getText()),
 				valueOf(hoursF.getText()), valueOf(minuteF.getText()));
+		
 		return d;
 	}
 
