@@ -917,7 +917,7 @@ public class Diary extends javax.swing.JFrame {
 
 	private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton2MouseClicked
 		Date d1 = giveDateFind();
-		System.out.println(d1);
+		//System.out.println(d1);
 	}// GEN-LAST:event_jButton2MouseClicked
 
 	private Date giveDateEvent() {
