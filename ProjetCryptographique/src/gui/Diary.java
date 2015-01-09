@@ -29,7 +29,6 @@ public class Diary extends javax.swing.JFrame {
 	private DefaultTableModel model;
 	protected ArrayList<AbsEvent> diary = new ArrayList<AbsEvent>();
 
-	// sdjkg
 
 	/**
 	 * Creates new form Diary
@@ -908,7 +907,8 @@ public class Diary extends javax.swing.JFrame {
 				description.getText(), giveDateEvent(), giveDateEnd());
 		if (!cryptEvent.isSelected()) {
 
-
+			diary.add(eventCreated);
+			Memory.writeToFile(diary);
 			model.addRow(new Object[] { eventCreated.getName(),
 					eventCreated.getDescription(), eventCreated.getDate(), eventCreated.getLength() });
 		}
