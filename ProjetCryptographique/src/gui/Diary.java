@@ -102,14 +102,27 @@ public class Diary extends javax.swing.JFrame {
 		}
 	}
 	
-//	private int count(){
-//		System.out.println(model.getRowCount());
-//		return model.getRowCount();
-//	}
-	
+	private void addOne(AbsEvent tmp) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		if (!tmp.isCrypted()) {
+			Event tmp2 = (Event) tmp;
+			model.addRow(new Object[] { tmp2.getName(),
+					tmp2.getDescription(), tmp2.getDate().toString(),
+					String.valueOf(tmp2.getLength()) });
+		} else {
+			EventCrypted tmp2 = (EventCrypted) tmp;
+			Crypter cr = new Crypter("password");
+			Event tmp3 = cr.decryptEvent(tmp2);
+			model.addRow(new Object[] { tmp3.getName(),
+					tmp3.getDescription(), tmp3.getDate().toString(),
+					String.valueOf(tmp3.getLength()) });
+		}
+	}
+		
 	private void clean(){
 		for(int i = 0;i < model.getRowCount();i++){
 			model.removeRow(i);
+			System.out.println(i);
+			System.out.println(model.getRowCount());
 		}
 	}
 
@@ -985,9 +998,7 @@ public class Diary extends javax.swing.JFrame {
 			Memory.writeToFile(diary);
 
 		}
-		
-		//model.removeRow(i);
-		refresh();
+		addOne(eventCreated);
 
 	}// GEN-LAST:event_jButton1MouseClicked
 
