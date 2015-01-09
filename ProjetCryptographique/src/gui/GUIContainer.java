@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  *
  * @author Axel
@@ -49,14 +52,36 @@ public class GUIContainer extends javax.swing.JFrame {
         passwordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                passwordFieldKeyPressed(evt);
+                try {
+					passwordFieldKeyPressed(evt);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
         button.setText("OK");
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonMouseClicked(evt);
+                try {
+					buttonMouseClicked(evt);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         button.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -109,7 +134,7 @@ public class GUIContainer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void buttonMouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void buttonMouseClicked(java.awt.event.MouseEvent evt) throws FileNotFoundException, ClassNotFoundException, IOException {                                    
         char[] passwordEnter = passwordField.getPassword();
         String pass = new String(passwordEnter);
         if(pass.equals("password")){
@@ -124,7 +149,7 @@ public class GUIContainer extends javax.swing.JFrame {
             
     }                                 
 
-    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {                                         
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) throws FileNotFoundException, ClassNotFoundException, IOException {                                         
         if(evt.getKeyChar()=='\n'){
             char[] passwordEnter = passwordField.getPassword();
             String pass = new String(passwordEnter);
