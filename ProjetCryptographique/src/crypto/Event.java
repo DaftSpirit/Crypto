@@ -1,7 +1,19 @@
 package crypto;
 
 import java.util.Date;
-
+/**
+ * A class to represent an Event non crypted
+ * Extends @class AbsEvent
+ * An event is describe by 2 string : name and description
+ * 		name : name of the event
+ * 		description : a description of the event
+ * 	and 2 Date
+ * 		date : represent de date at which the event start
+ * 		fin : the date at which the event end
+ * 
+ * @author gael
+ *
+ */
 public class Event extends AbsEvent{
 
 	protected String name;
@@ -59,8 +71,10 @@ public class Event extends AbsEvent{
 		this.fin = fin;
 	}
 	
-	/**
+	/**@author gael
+	 * 
 	 * Computes the length of the curent event
+	 * Used by the gui
 	 * @return the length in minutes
 	 */
 	public long getLength() {
