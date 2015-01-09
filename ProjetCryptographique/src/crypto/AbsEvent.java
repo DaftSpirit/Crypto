@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 
 /**
- * member crypted defines if the event is crypted or not
+ * An abstract class. Used for legacy purpose.
+ * Super class of Event and EventCrypted. Allow us to made an ArrayList of AbsEvent
  * @author gael
  */
 public abstract class AbsEvent implements Serializable{
@@ -16,6 +17,10 @@ public abstract class AbsEvent implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * @author joris
+	 * @return the current state of an Event : if it's crypted or not
+	 */
 	public boolean isCrypted()
 	{
 		return this.crypted;
