@@ -2,20 +2,13 @@ package crypto;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -50,7 +43,7 @@ public class GUITester {
 			System.out.println(e2);
 
 			/* Writing in a file the diary */		
-			
+
 			ObjectOutputStream oos = new ObjectOutputStream(
 					new BufferedOutputStream(
 							new FileOutputStream(new File("agenda.txt"))));
