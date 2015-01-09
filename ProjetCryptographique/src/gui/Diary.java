@@ -16,7 +16,7 @@ public class Diary extends javax.swing.JFrame {
 
     private DefaultTableModel model;
     /**
-     * Creates new form Dyari
+     * Creates new form Diary
      */
     public Diary() {
         initComponents();
@@ -51,6 +51,7 @@ public class Diary extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lenght = new javax.swing.JTextField();
+        cryptEvent = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 204));
@@ -70,6 +71,7 @@ public class Diary extends javax.swing.JFrame {
         agenda.getColumnModel().getColumn(0).setPreferredWidth(100);
         agenda.setRowHeight(40);
         model = (DefaultTableModel) agenda.getModel();
+        model.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
         jScrollPane2.setViewportView(agenda);
 
         jButton1.setText("Add");
@@ -107,24 +109,44 @@ public class Diary extends javax.swing.JFrame {
         jLabel5.setText("Year");
 
         month.setToolTipText("");
+        month.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                monthKeyPressed(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(255, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Month");
 
         jTextField5.setToolTipText("");
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+        });
 
         jLabel7.setBackground(new java.awt.Color(255, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Day");
 
         hours.setToolTipText("");
+        hours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                hoursKeyPressed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Hours");
 
         minute.setToolTipText("");
+        minute.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                minuteKeyPressed(evt);
+            }
+        });
 
         jLabel9.setBackground(new java.awt.Color(255, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -135,6 +157,8 @@ public class Diary extends javax.swing.JFrame {
         jLabel10.setText("Lenght :");
 
         lenght.setToolTipText("");
+
+        cryptEvent.setText("Crypt Event");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,13 +205,17 @@ public class Diary extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lenght)
                         .addGap(18, 18, 18))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cryptEvent)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,14 +248,16 @@ public class Diary extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(minute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lenght, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(minute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cryptEvent)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lenght, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -236,7 +266,7 @@ public class Diary extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        model.addRow(new Object[]{eventName.getText(), description.getText(), " ", lenght.getText()});
+        model.addRow(new Object[]{eventName.getText(), description.getText(), lenght.getText()});
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void yearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearKeyPressed
@@ -247,6 +277,22 @@ public class Diary extends javax.swing.JFrame {
      }
      
     }//GEN-LAST:event_yearKeyPressed
+
+    private void monthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_monthKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_monthKeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void hoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hoursKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hoursKeyPressed
+
+    private void minuteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_minuteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minuteKeyPressed
 
     /**
      * @param args the command line arguments
@@ -280,6 +326,7 @@ public class Diary extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable agenda;
+    private javax.swing.JCheckBox cryptEvent;
     private javax.swing.JTextField description;
     private javax.swing.JTextField eventName;
     private javax.swing.JTextField hours;
