@@ -16,12 +16,14 @@ public class GUITester {
 	public static void main(String[] args) {
 
 		Crypter cr;
+		Crypter cr2;
 		try {
 			ArrayList<AbsEvent> diary = new ArrayList<AbsEvent>();
 			cr = new Crypter("password");
+//			cr2 = new Crypter("password2");	//wrong password tester
 
 			Date d1 = new Date();
-			Event e1 = new Event("Event 1", "une description", d1);
+			Event e1 = new Event("Event 1", "une description", d1, d1);
 
 			diary.add(e1);
 			// System.out.println(e1);
@@ -43,6 +45,9 @@ public class GUITester {
 			System.out.println("Loaded from file");		//debug purpose
 			System.out.println(loadedList.toString());	//debug purpose
 			
+//			EventCrypted eventC = (EventCrypted) loadedList.get(1);
+//			Event eventNonC = cr2.decryptEvent(eventC);
+//			System.out.println(eventNonC);
 
 
 		} catch (NoSuchAlgorithmException e) {
@@ -69,6 +74,8 @@ public class GUITester {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			System.out.println("Wrong password. Ye hacker !");
 		}
 
 	}

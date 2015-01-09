@@ -6,19 +6,20 @@ public class EventCrypted extends AbsEvent {
 	private byte[] name;
 	private byte[] description;
 	private byte[] date;
+	private byte[] fin;
 	
-	
-	public EventCrypted(byte[] name, byte[] description, byte[] date) {
+	public EventCrypted(byte[] name, byte[] description, byte[] date, byte[] fin) {
 		this.name = name;
 		this.description = description;
 		this.date = date;
+		this.fin = fin;
 	}
 
 	@Override
 	public String toString() {
 
-		return "[name=" + name.toString() + ", description=" + description.toString()
-				+ ", date=" + date.toString() + ", CRYPTED]\n";
+		return "This event crypted [name=" + name.toString() + ", description=" + description.toString()
+				+ ", date=" + date.toString() + "]\n";
 	}
 	
 	public byte[] getName() {
@@ -43,6 +44,14 @@ public class EventCrypted extends AbsEvent {
 
 	public void setDate(byte[] date) {
 		this.date = date;
+	}
+
+	public byte[] getFin() {
+		return fin;
+	}
+
+	public void setFin(byte[] fin) {
+		this.fin = fin;
 	}
 	
 	

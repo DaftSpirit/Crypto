@@ -45,10 +45,11 @@ public class Crypter {
 		byte[] nameCrypted = encrypt(e.name);
 		byte[] descriptionCrypted = encrypt(e.description);
 		byte[] dateCrypted = encryptDate(e.date);
-
+		byte[] finCrypted = encryptDate(e.fin);
 		//wipping Event e :
-		e=new Event(null, null, null);
-		return new EventCrypted(nameCrypted, descriptionCrypted, dateCrypted);
+		e=new Event(null, null, null, null);
+		
+		return new EventCrypted(nameCrypted, descriptionCrypted, dateCrypted, finCrypted);
 	}
 
 	public Event decryptEvent(EventCrypted ec) throws InvalidKeyException,
@@ -57,8 +58,9 @@ public class Crypter {
 		String name = decrypt(ec.getName());
 		String description = decrypt(ec.getDescription());
 		Date date = decryptDate(ec.getDate());
+		Date fin = decryptDate(ec.getFin());
 
-		return new Event(name, description, date);
+		return new Event(name, description, date, fin);
 	}
 
 	/**
