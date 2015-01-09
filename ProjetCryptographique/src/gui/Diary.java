@@ -924,7 +924,6 @@ public class Diary extends javax.swing.JFrame {
 		Date d = new Date(valueOf(year.getText()),
 				valueOf(month.getText()) - 1, valueOf(day.getText()),
 				valueOf(hours.getText()), valueOf(minute.getText()));
-		System.out.println(d);
 		return d;
 	}
 
@@ -932,7 +931,6 @@ public class Diary extends javax.swing.JFrame {
 		Date d = new Date(valueOf(yearF.getText()),
 				valueOf(monthF.getText()) - 1, valueOf(dayF.getText()),
 				valueOf(hoursF.getText()), valueOf(minuteF.getText()));
-		System.out.println(d);
 		return d;
 	}
 
@@ -940,7 +938,6 @@ public class Diary extends javax.swing.JFrame {
 		Date d = new Date(valueOf(year1.getText()),
 				valueOf(month1.getText()) - 1, valueOf(day1.getText()),
 				valueOf(hours1.getText()), valueOf(minute1.getText()));
-		System.out.println(d);
 		return d;
 	}
 
