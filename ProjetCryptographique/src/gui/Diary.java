@@ -351,7 +351,24 @@ public class Diary extends javax.swing.JFrame {
 		jButton2.setText("Find");
 		jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jButton2MouseClicked(evt);
+				try {
+					jButton2MouseClicked(evt);
+				} catch (InvalidKeyException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalBlockSizeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (BadPaddingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -1002,9 +1019,24 @@ public class Diary extends javax.swing.JFrame {
 
 	}// GEN-LAST:event_jButton1MouseClicked
 
-	private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton2MouseClicked
+	private void jButton2MouseClicked(java.awt.event.MouseEvent evt) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {// GEN-FIRST:event_jButton2MouseClicked
 		Date d1 = giveDateFind();
-		
+		Crypter cr = new Crypter("password");
+		Iterator<AbsEvent> it = diary.iterator();
+		while(it.hasNext())
+		{
+			AbsEvent ae = it.next();
+			if(ae.isCrypted())
+			{
+				Event de = cr.decryptEvent((EventCrypted)ae);
+				//Je veux l'afficher demerdez vous !
+			}
+			else
+			{
+				Event eve = (Event)ae;
+				//je veux l'afficher demerdez vous !
+			}
+		}
 		System.out.println(d1);
 	}// GEN-LAST:event_jButton2MouseClicked
 
