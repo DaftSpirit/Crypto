@@ -16,7 +16,7 @@ public class Diary extends javax.swing.JFrame {
 
     private DefaultTableModel model;
     /**
-     * Creates new form Dyari
+     * Creates new form Diary
      */
     public Diary() {
         initComponents();
