@@ -10,7 +10,12 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-
+/**
+ * Class used to crypt and decrypt Events and Dates
+ *  
+ * @authors axel, joris, gael, estelle
+ *
+ */
 public class Crypter {
 
 	private Key sKey;
@@ -111,8 +116,9 @@ public class Crypter {
 		return new String(plainText);
 	}
 	
-	/**
+	/** 
 	 * Decrypt a date
+	 * 		@author gael
 	 * @param buffer : the encrypted date;
 	 * @return A new Date pointing the same time as buffer
 	 * @throws NoSuchAlgorithmException
@@ -124,10 +130,7 @@ public class Crypter {
 	private Date decryptDate(byte[] buffer) throws NoSuchAlgorithmException,
 			NoSuchPaddingException, InvalidKeyException,
 			IllegalBlockSizeException, BadPaddingException {
-		// Getting a Cipher instanciation specialised in the RC4 algorithm
 		Cipher rc4 = Cipher.getInstance("RC4");
-		// Getting the decrypting key
-		// Initialisation of the crypter to decrypt with the decrypting key
 		rc4.init(Cipher.DECRYPT_MODE, this.sKey);
 		byte[] plainText = rc4.doFinal(buffer);
 		String dateTxt = new String(plainText);
@@ -137,6 +140,8 @@ public class Crypter {
 
 	/**
 	 * Encrypt a date
+	 * 		@author gael
+	 * 
 	 * @param date	: Event date
 	 * @return	the encrypted Date as a byte[]
 	 * @throws IllegalBlockSizeException
@@ -146,12 +151,8 @@ public class Crypter {
 	 * @throws NoSuchPaddingException
 	 */
 	private byte[] encryptDate(Date date) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
-		// Getting a Cipher instanciation specialised in the RC4 algorithm
 		Cipher rc4 = Cipher.getInstance("RC4");
-		// Getting the encrypting key
-		// Initialisation of the crypter to encrypt with the encrypting key
 		rc4.init(Cipher.ENCRYPT_MODE, this.sKey);
-		// creating a byte[] from date 
 		byte[] dateTxt = new Long(date.getTime()).toString().getBytes();
 		byte[] plainText = rc4.doFinal(dateTxt);
 		return plainText;
