@@ -15,6 +15,9 @@ public abstract class AbsEvent implements Serializable{
 	 * @author joris
 	 */
 	private static final long serialVersionUID = 1L;
-
-
+	
+	public boolean isCrypted()
+	{
+		return this.crypted;
+	}
 }
