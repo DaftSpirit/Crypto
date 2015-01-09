@@ -1,5 +1,7 @@
 package crypto;
 
+import gui.Memory;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -42,37 +44,15 @@ public class GUITester {
 			Event e2 = cr.decryptEvent(ce);
 			System.out.println(e2);
 
-			/* Writing in a file the diary */
-//			System.out.println("*********** WRITING EVENTS TO FILE ***********");
-//			ObjectOutputStream oos = new ObjectOutputStream(
-//					new BufferedOutputStream(new FileOutputStream(new File(
-//							"agenda.txt"))));
-//			Iterator<AbsEvent> it = diary.iterator();
-//			oos.writeInt(diary.size());		//writing number of event to read used for reading
-//			while (it.hasNext()) {
-//				oos.writeObject(it.next());
-//			}
-//			oos.close();
-
-			/* Reading the diary */
-			File reader = new File("agenda.txt");
-			ObjectInputStream ois = new ObjectInputStream(
-					new BufferedInputStream(new FileInputStream(reader)));
-
-			System.out.println("*********** READING EVENTS FROM FILE ***********");
-			int lineToRead = (int)ois.readInt();
+			/* Writing events to file */
+			Memory.writeToFile(diary);
 			
-			// testing adding event to a new arrayList from file
-			AbsEvent eventLoaded;
-			ArrayList<AbsEvent> loadedList = new ArrayList<AbsEvent>();
-			for(int i=0;i<lineToRead;i++) {
-//				System.out.println(((AbsEvent)ois.readObject()).toString());
-				eventLoaded = (AbsEvent)ois.readObject();	//reading event
-				loadedList.add(eventLoaded);				//adding event to the new arrayList
-			}
-			ois.close();
-			System.out.println("\t ArrayList composed from file");
-			System.out.println(loadedList.toString());
+			/* Reading events from file */
+			ArrayList<AbsEvent> loadedList = Memory.readFromFile();
+			System.out.println("Loaded from file");		//debug purpose
+			System.out.println(loadedList.toString());	//debug purpose
+			
+
 
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -90,14 +70,14 @@ public class GUITester {
 			e.printStackTrace();
 
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
