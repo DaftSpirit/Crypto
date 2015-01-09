@@ -13,14 +13,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import crypto.AbsEvent;
-
+/**
+ * Abstract class used to save and load events to/from a file
+ * @author gael
+ *
+ */
 public abstract class  Memory {
 	
 	static File reader = new File("agenda.txt");
 	
+	/**
+	 * Save the ArrayList passed in @param to the file
+	 * @param the ArrayList containing the events will be saved to disk
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void writeToFile(ArrayList<AbsEvent> list) throws FileNotFoundException, IOException {
-		System.out.println("*********** WRITING EVENTS TO FILE ***********"); //debug purpose
-		
 		ObjectOutputStream oos = new ObjectOutputStream(
 				new BufferedOutputStream(new FileOutputStream(reader)));
 		Iterator<AbsEvent> it = list.iterator();
@@ -31,9 +39,14 @@ public abstract class  Memory {
 		oos.close();
 	}
 	
+	/**
+	 * Return the ArrayList saved in the file
+	 * @return	the ArrayList containing the events
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static ArrayList<AbsEvent> readFromFile() throws FileNotFoundException, IOException, ClassNotFoundException {
-		System.out.println("*********** READING EVENTS FROM FILE ***********");	//debug purpose
-		
 		ArrayList<AbsEvent> list = new ArrayList<AbsEvent>();
 		File reader = new File("agenda.txt");
 		ObjectInputStream ois = new ObjectInputStream(
