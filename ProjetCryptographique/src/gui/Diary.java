@@ -128,7 +128,7 @@ public class Diary extends javax.swing.JFrame {
 
 		agenda.setModel(new javax.swing.table.DefaultTableModel(
 				new Object[][] {}, new String[] { "Name of Event",
-						"Description", "Date", "Lenght" }));
+						"Description", "Date", "Length" }));
 		agenda.getColumnModel().getColumn(2).setPreferredWidth(200);
 		agenda.getColumnModel().getColumn(1).setPreferredWidth(400);
 		agenda.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -905,15 +905,14 @@ public class Diary extends javax.swing.JFrame {
 	private void jButton1MouseClicked(java.awt.event.MouseEvent evt)
 			throws FileNotFoundException, IOException {// GEN-FIRST:event_jButton1MouseClicked
 		Event eventCreated = new Event(eventName.getText(),
-				description.getText(), new Date(), new Date());
+				description.getText(), giveDateEvent(), giveDateEnd());
 		if (!cryptEvent.isSelected()) {
 
 
-			model.addRow(new Object[] { eventName.getText(),
-					description.getText(), new Date(), new Date() });
+			model.addRow(new Object[] { eventCreated.getName(),
+					eventCreated.getDescription(), eventCreated.getDate(), eventCreated.getLength() });
 		}
 
-		model.addRow(new Object[] {});
 	}// GEN-LAST:event_jButton1MouseClicked
 
 	private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton2MouseClicked
