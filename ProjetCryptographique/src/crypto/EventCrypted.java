@@ -1,7 +1,12 @@
 package crypto;
 
 
-
+/**
+ * A class to represent a crypted Event.
+ * Extends @class AbsEvent
+ * A crypted Event is described by 4 byte[] for crypted name, description, date start and date end 
+ * @authors gael, joris, estelle, axel
+ */
 public class EventCrypted extends AbsEvent {
 	private byte[] name;
 	private byte[] description;
