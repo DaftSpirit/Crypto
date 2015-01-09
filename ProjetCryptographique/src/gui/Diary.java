@@ -1041,7 +1041,7 @@ public class Diary extends javax.swing.JFrame {
 	}// GEN-LAST:event_jButton2MouseClicked
 
 	private Date giveDateEvent() {
-		Date d = new Date(valueOf(year.getText()),
+		Date d = new Date(valueOf(year.getText())-1900,
 				valueOf(month.getText()) - 1, valueOf(day.getText()),
 				valueOf(hours.getText()), valueOf(minute.getText()));
 		return d;
