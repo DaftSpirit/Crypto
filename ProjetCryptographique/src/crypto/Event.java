@@ -80,7 +80,7 @@ public class Event extends AbsEvent{
 	public long getLength() {
 		long lengthms = fin.getTime() - date.getTime();
 		
-		return lengthms/3600;
+		return lengthms/60000;
 	}
 	
 	@Override
