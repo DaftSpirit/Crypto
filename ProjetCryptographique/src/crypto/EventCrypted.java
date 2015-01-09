@@ -13,6 +13,7 @@ public class EventCrypted extends AbsEvent {
 		this.description = description;
 		this.date = date;
 		this.fin = fin;
+		super.crypted = true;
 	}
 
 	@Override

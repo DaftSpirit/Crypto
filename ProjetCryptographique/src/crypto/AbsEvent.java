@@ -9,12 +9,16 @@ import java.io.Serializable;
  */
 public abstract class AbsEvent implements Serializable{
 
-	private boolean crypted;
+	protected boolean crypted;
 	
 	/**
 	 * @author joris
 	 */
 	private static final long serialVersionUID = 1L;
-
-
+	
+	public boolean isCrypted()
+	{
+		return this.crypted;
+	}
+	
 }
