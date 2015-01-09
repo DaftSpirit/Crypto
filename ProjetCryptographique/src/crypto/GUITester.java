@@ -2,10 +2,13 @@ package crypto;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -46,20 +49,29 @@ public class GUITester {
 			Event e2 = cr.decryptEvent(ce);
 			System.out.println(e2);
 
+			/* Writing in a file the diary */		
 			
-			/* Writing in a file the diary */
-			//ObjectInputStream ois;
-		
-			
-			FileWriter fw = new FileWriter("agenda.txt", false);
-			BufferedWriter output = new BufferedWriter(fw);
-			
+			ObjectOutputStream oos = new ObjectOutputStream(
+					new BufferedOutputStream(
+							new FileOutputStream(new File("agenda.txt"))));
 			Iterator<AbsEvent> it = diary.iterator();
 			while(it.hasNext())
 			{
-				output.write(it.next().toString());
+				oos.writeObject(it.next());
 			}
-			output.close();	
+			oos.close();
+			
+			/* Reading the diary */
+			File reader = new File("agenda.txt");
+			ObjectInputStream ois = new ObjectInputStream(
+					new BufferedInputStream(new FileInputStream(reader)));
+			
+			AbsEvent e;
+			while((e = (AbsEvent)(ois.readObject())) != null)
+			{
+				System.out.println("Event read : " + e);	
+			}
+			ois.close();
 
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -80,6 +92,9 @@ public class GUITester {
 			e.printStackTrace();
 			
 		} catch (IOException e) {
+			e.printStackTrace();
+			
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			
 		}
