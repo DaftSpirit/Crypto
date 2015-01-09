@@ -195,7 +195,6 @@ public class GUIContainer extends javax.swing.JFrame {
                 d.setVisible(true);
              }else{
                 passwordField.setText("");
-                //System.out.println("password fault");  
             }
         }
     }                                        
