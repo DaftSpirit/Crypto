@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public abstract class AbsEvent implements Serializable{
 
-	private boolean crypted;
+	protected boolean crypted;
 	
 	/**
 	 * @author joris
@@ -20,4 +20,5 @@ public abstract class AbsEvent implements Serializable{
 	{
 		return this.crypted;
 	}
+	
 }

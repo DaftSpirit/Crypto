@@ -15,6 +15,7 @@ public class Event extends AbsEvent{
 		this.date = new Date(); // unix time, initialized at the time of
 								// creation
 		this.setFin(new Date());
+		super.crypted = false;
 	}
 
 	public Event(String name, String description, Date date, Date fin) {
@@ -22,6 +23,7 @@ public class Event extends AbsEvent{
 		this.description = description;
 		this.date = date;
 		this.setFin(fin);
+		super.crypted = false;
 	}
 
 	
