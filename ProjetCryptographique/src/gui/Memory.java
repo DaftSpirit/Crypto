@@ -23,7 +23,7 @@ import crypto.AbsEvent;
  */
 public abstract class  Memory {
 	
-	static File reader = new File("agenda.txt");
+	static File reader;
 	
 	/**
 	 * Save the ArrayList passed in @param to the file
@@ -32,6 +32,7 @@ public abstract class  Memory {
 	 * @throws IOException
 	 */
 	public static void writeToFile(ArrayList<AbsEvent> list) throws FileNotFoundException, IOException {
+		Memory.reader = new File("agenda.txt");
 		ObjectOutputStream oos = new ObjectOutputStream(
 				new BufferedOutputStream(new FileOutputStream(reader)));
 		Iterator<AbsEvent> it = list.iterator();
@@ -51,7 +52,7 @@ public abstract class  Memory {
 	 */
 	public static ArrayList<AbsEvent> readFromFile() throws FileNotFoundException, IOException, ClassNotFoundException {
 		ArrayList<AbsEvent> list = new ArrayList<AbsEvent>();
-		File reader = new File("agenda.txt");
+		Memory.reader = new File("agenda.txt");
 		ObjectInputStream ois = new ObjectInputStream(
 				new BufferedInputStream(new FileInputStream(reader)));
 		int lineToRead = (int)ois.readInt();
