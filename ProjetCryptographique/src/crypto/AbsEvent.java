@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * An abstract class. Used for legacy purpose.
- * Super class of Event and EventCrypted. Allow us to made an ArrayList of AbsEvent
+ * Super class of Event and EventCrypted. Allows to make an ArrayList of AbsEvent
  * @authors gael, joris
  */
 public abstract class AbsEvent implements Serializable{
