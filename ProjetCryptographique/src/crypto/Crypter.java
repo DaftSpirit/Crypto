@@ -57,13 +57,13 @@ public class Crypter {
 		return new EventCrypted(nameCrypted, descriptionCrypted, dateCrypted, finCrypted);
 	}
 
-	public Event decryptEvent(EventCrypted ec) throws InvalidKeyException,
+	public Event decryptEvent(EventCrypted ae) throws InvalidKeyException,
 			NoSuchAlgorithmException, NoSuchPaddingException,
 			IllegalBlockSizeException, BadPaddingException {
-		String name = decrypt(ec.getName());
-		String description = decrypt(ec.getDescription());
-		Date date = decryptDate(ec.getDate());
-		Date fin = decryptDate(ec.getFin());
+		String name = decrypt(ae.getName());
+		String description = decrypt(ae.getDescription());
+		Date date = decryptDate(ae.getDate());
+		Date fin = decryptDate(ae.getFin());
 
 		return new Event(name, description, date, fin);
 	}
