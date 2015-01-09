@@ -79,6 +79,11 @@ public class Diary extends javax.swing.JFrame {
 	}
 	
 	private void refresh() throws FileNotFoundException, ClassNotFoundException, IOException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		
+		/* Initialisation Obligatoire pour eviter les exceptions des File */
+		diary.add((AbsEvent)new Event());
+		Memory.writeToFile(diary);
+		
 		diary = Memory.readFromFile();
 		clean();
 		Iterator<AbsEvent> it = diary.iterator();
