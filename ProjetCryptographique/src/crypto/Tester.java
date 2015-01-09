@@ -12,7 +12,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-public class GUITester {
+public class Tester {
 	public static void main(String[] args) {
 
 		Crypter cr;
