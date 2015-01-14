@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
-import fr.ensisa.hassenforder.game.model.Player;
-import fr.ensisa.hassenforder.game.model.Product;
+import fr.uha.ensisa.banana.game.model.Player;
+import fr.uha.ensisa.banana.game.model.Product;
 
 /**
  *

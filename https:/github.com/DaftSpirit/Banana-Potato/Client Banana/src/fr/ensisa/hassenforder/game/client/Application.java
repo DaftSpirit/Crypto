@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Collection;
 
-import fr.ensisa.hassenforder.game.model.Player;
-import fr.ensisa.hassenforder.game.model.Product;
-import fr.ensisa.hassenforder.network.Protocol;
+import fr.uha.ensisa.banana.game.model.Player;
+import fr.uha.ensisa.banana.game.model.Product;
+import fr.uha.ensisa.banana.network.Protocol;
 
 /**
  *
