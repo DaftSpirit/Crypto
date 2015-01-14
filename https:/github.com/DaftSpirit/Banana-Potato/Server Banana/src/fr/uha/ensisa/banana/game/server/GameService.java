@@ -1,4 +1,4 @@
-package fr.ensisa.hassenforder.game.server;
+package fr.uha.ensisa.banana.game.server;
 
 import java.io.IOException;
 import java.net.Socket;

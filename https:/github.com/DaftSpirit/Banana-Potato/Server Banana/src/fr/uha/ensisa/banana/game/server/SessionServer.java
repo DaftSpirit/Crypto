@@ -1,14 +1,14 @@
-package fr.ensisa.hassenforder.game.server;
+package fr.uha.ensisa.banana.game.server;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Collection;
 
-import fr.ensisa.hassenforder.game.model.Account;
-import fr.ensisa.hassenforder.game.model.Product;
-import fr.ensisa.hassenforder.game.model.User;
-import fr.ensisa.hassenforder.network.FileHelper;
-import fr.ensisa.hassenforder.network.Protocol;
+import fr.uha.ensisa.banana.game.model.Account;
+import fr.uha.ensisa.banana.game.model.Product;
+import fr.uha.ensisa.banana.game.model.User;
+import fr.uha.ensisa.banana.network.FileHelper;
+import fr.uha.ensisa.banana.network.Protocol;
 
 public class SessionServer {
 

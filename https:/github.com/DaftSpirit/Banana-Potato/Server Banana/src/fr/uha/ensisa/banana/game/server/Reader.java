@@ -1,10 +1,10 @@
-package fr.ensisa.hassenforder.game.server;
+package fr.uha.ensisa.banana.game.server;
 
 
 import java.io.InputStream;
 
-import fr.ensisa.hassenforder.network.BasicAbstractReader;
-import fr.ensisa.hassenforder.network.Protocol;
+import fr.uha.ensisa.banana.network.BasicAbstractReader;
+import fr.uha.ensisa.banana.network.Protocol;
 
 public class Reader extends BasicAbstractReader {
 

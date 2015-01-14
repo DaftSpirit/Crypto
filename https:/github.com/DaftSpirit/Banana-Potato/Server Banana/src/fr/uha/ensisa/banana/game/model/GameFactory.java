@@ -1,9 +1,9 @@
-package fr.ensisa.hassenforder.game.model;
+package fr.uha.ensisa.banana.game.model;
 
 import java.util.Random;
 
-import fr.ensisa.hassenforder.game.model.Category;
-import fr.ensisa.hassenforder.game.model.Product;
+import fr.uha.ensisa.banana.game.model.Category;
+import fr.uha.ensisa.banana.game.model.Product;
 
 public class GameFactory {
 

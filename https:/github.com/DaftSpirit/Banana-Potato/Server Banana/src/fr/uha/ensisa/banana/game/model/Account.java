@@ -1,12 +1,12 @@
-package fr.ensisa.hassenforder.game.model;
+package fr.uha.ensisa.banana.game.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import fr.ensisa.hassenforder.game.model.Player;
-import fr.ensisa.hassenforder.game.model.Product;
+import fr.uha.ensisa.banana.game.model.Player;
+import fr.uha.ensisa.banana.game.model.Product;
 
 public class Account extends Player {
 

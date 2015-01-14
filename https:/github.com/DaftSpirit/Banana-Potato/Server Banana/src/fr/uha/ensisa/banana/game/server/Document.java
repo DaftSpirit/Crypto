@@ -1,13 +1,13 @@
-package fr.ensisa.hassenforder.game.server;
+package fr.uha.ensisa.banana.game.server;
 
 import java.util.Collection;
 
-import fr.ensisa.hassenforder.game.model.Account;
-import fr.ensisa.hassenforder.game.model.Accounts;
-import fr.ensisa.hassenforder.game.model.Product;
-import fr.ensisa.hassenforder.game.model.GameFactory;
-import fr.ensisa.hassenforder.game.model.User;
-import fr.ensisa.hassenforder.game.model.Users;
+import fr.uha.ensisa.banana.game.model.Account;
+import fr.uha.ensisa.banana.game.model.Accounts;
+import fr.uha.ensisa.banana.game.model.GameFactory;
+import fr.uha.ensisa.banana.game.model.Product;
+import fr.uha.ensisa.banana.game.model.User;
+import fr.uha.ensisa.banana.game.model.Users;
 
 public class Document {
 
