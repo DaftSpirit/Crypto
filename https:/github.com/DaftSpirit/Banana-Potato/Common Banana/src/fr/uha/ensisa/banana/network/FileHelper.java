@@ -1,4 +1,4 @@
-package fr.ensisa.hassenforder.network;
+package fr.uha.ensisa.banana.network;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

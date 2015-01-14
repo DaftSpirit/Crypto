@@ -1,4 +1,4 @@
-package fr.ensisa.hassenforder.network;
+package fr.uha.ensisa.banana.network;
 
 public class ProtocolException extends Exception {
 

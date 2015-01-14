@@ -1,4 +1,4 @@
-package fr.ensisa.hassenforder.game.model;
+package fr.uha.ensisa.banana.game.model;
 
 import java.util.Collection;
 import java.util.Map;
