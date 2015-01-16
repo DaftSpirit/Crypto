@@ -95,6 +95,7 @@ public class Diary extends javax.swing.JFrame {
 				model.addRow(new Object[] { tmp2.getName(),
 						tmp2.getDescription(), tmp2.getDate().toString(),
 						String.valueOf(tmp2.getLength()) });
+				System.out.println(tmp2.getLength());
 			} else {
 				EventCrypted tmp2 = (EventCrypted) tmp;
 				Crypter cr = new Crypter("password");
