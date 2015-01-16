@@ -55,26 +55,6 @@ public class Diary extends javax.swing.JFrame {
 		
 		
 		refresh();
-//		diary = Memory.readFromFile();
-//		Iterator<AbsEvent> it = diary.iterator();
-//		while (it.hasNext()) {
-//			AbsEvent tmp = it.next();
-//			//System.out.println(tmp);
-//			if (!tmp.isCrypted()) {
-//				Event tmp2 = (Event) tmp;
-//				model.addRow(new Object[] { tmp2.getName(),
-//						tmp2.getDescription(), tmp2.getDate().toString(),
-//						String.valueOf(tmp2.getLength()) });
-//			} else {
-//				EventCrypted tmp2 = (EventCrypted) tmp;
-//				Crypter cr = new Crypter("password");
-//				Event tmp3 = cr.decryptEvent(tmp2);
-//				model.addRow(new Object[] { tmp3.getName(),
-//						tmp3.getDescription(), tmp3.getDate().toString(),
-//						String.valueOf(tmp3.getLength()) });
-//
-//			}
-//		}
 		
 	}
 	
@@ -92,10 +72,11 @@ public class Diary extends javax.swing.JFrame {
 			//System.out.println(tmp);
 			if (!tmp.isCrypted()) {
 				Event tmp2 = (Event) tmp;
+				//System.out.println(tmp2);//
 				model.addRow(new Object[] { tmp2.getName(),
 						tmp2.getDescription(), tmp2.getDate().toString(),
 						String.valueOf(tmp2.getLength()) });
-				System.out.println(tmp2.getLength());
+				//System.out.println(tmp2.getLength()); //Donne 0 WTF
 			} else {
 				EventCrypted tmp2 = (EventCrypted) tmp;
 				Crypter cr = new Crypter("password");
@@ -1053,7 +1034,7 @@ public class Diary extends javax.swing.JFrame {
 				}
 			}
 		}
-		System.out.println(d1);
+		//System.out.println(d1);
 	}// GEN-LAST:event_jButton2MouseClicked
 
 	private Date giveDateEvent() {
