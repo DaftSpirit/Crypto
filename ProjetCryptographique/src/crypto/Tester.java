@@ -22,8 +22,9 @@ public class Tester {
 			cr = new Crypter("password");
 //			cr2 = new Crypter("password2");	//wrong password tester
 
-			Date d1 = new Date();
-			Event e1 = new Event("Event 1", "une description", d1, d1);
+			Date d1 = new Date(2015,01,16,19,00);
+			Date d2 = new Date(2015,01,16,19,15);
+			Event e1 = new Event("Event 1", "une description", d1, d2);	//Preuve que le getLength() est OK
 
 			diary.add(e1);
 			// System.out.println(e1);
